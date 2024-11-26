@@ -11,7 +11,8 @@ from qa_app import qa_page
 from sentiment_analysis import sentiment_analysis_page
 from summarization import summarization_page
 from textgene import llama_text_generation_page
-from translation import translation_page  # Import the translation page
+from translation import translation_page
+from qr import qr_code_generator_page  # Import the QR Code Generator
 
 
 # Function to load Lottie animation from URL
@@ -31,15 +32,17 @@ def main():
         selected = option_menu(
             menu_title="Main Menu",  # Sidebar Title
             options=[
-                "Home", "Image Classification", "Image to Text", "Text to Image","Text Generation",
+                "Home", "Image Classification", "Image to Text", "Text to Image", "Story Generation",
                 "AI Chatbot", "Object Detection", "Question Answering",
                 "Sentiment Analysis", "Text Summarization", "Language Translation",
+                "QR Code Generator",
                 "About", "Contact"
             ],
             icons=[
-                "house", "file-earmark-image", "file-earmark-text", "image","book",
+                "house", "file-earmark-image", "file-earmark-text", "image", "book",
                 "chat-left-text", "camera-video", "question-circle",
-                "chat-left-dots", "newspaper", "translate", "info-circle", "envelope"
+                "chat-left-dots", "newspaper", "translate", "qrcode",
+                "info-circle", "envelope"
             ],
             menu_icon="cast",  # Icon for the sidebar menu
             default_index=0,
@@ -59,8 +62,7 @@ def main():
         title("Welcome to Our AI-powered Platform!")
 
         # Add animated Lottie animation for an interactive feel
-        animation = load_lottie_url("https://assets2.lottiefiles.com/packages/lf20_khzniaya.json")  # Try using a new URL
-
+        animation = load_lottie_url("https://assets2.lottiefiles.com/packages/lf20_khzniaya.json")
 
         if animation:
             st_lottie(animation, speed=1, width=500, height=300, key="welcome_animation")
@@ -83,7 +85,7 @@ def main():
         image_to_text_page()
     elif selected == "Text to Image":
         text_to_image_page()
-    elif selected == "Text Generation":
+    elif selected == "Story Generation":
         llama_text_generation_page()
     elif selected == "AI Chatbot":
         chatbot_page()
@@ -96,9 +98,11 @@ def main():
     elif selected == "Text Summarization":
         summarization_page()
     elif selected == "Language Translation":
-        translation_page()  # Show the translation page
+        translation_page()
+    elif selected == "QR Code Generator":
+        qr_code_generator_page()  # Call the QR Code Generator function
     elif selected == "About":
-        title("About")
+        title("About Us")
         write("""
             Welcome to our platform! We specialize in providing AI-powered tools for a variety of tasks, including **image classification**, **text summarization**, **sentiment analysis**, and more. 
             Our models are sourced from Hugging Face's pre-trained models, ensuring high performance and reliability. 
@@ -112,8 +116,8 @@ def main():
         write("""
         We’re here to assist you! Whether you have questions, feedback, or need support, feel free to reach out to us:
 
-        - **Email**: [ajay45saroj@gmail.com](mailto:ajay45saroj@gmail.com)
-        - **LinkedIn**: [Ajay Kumar Saroj](https://www.linkedin.com/in/ajay-kumar-saroj-8b5b50280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+        - **Email**: [Ajay Saroj](mailto:ajay45saroj@gmail.com)
+        - **LinkedIn**: [Ajay Saroj](https://www.linkedin.com/in/ajay-kumar-saroj-8b5b50280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 
 
         Our team is always ready to help you with any inquiries or concerns. Don't hesitate to get in touch — we value your feedback!

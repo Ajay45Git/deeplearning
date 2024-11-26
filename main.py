@@ -98,7 +98,7 @@ def main():
     elif selected == "Language Translation":
         translation_page()  # Show the translation page
     elif selected == "About":
-        title("About Us")
+        title("About")
         write("""
             Welcome to our platform! We specialize in providing AI-powered tools for a variety of tasks, including **image classification**, **text summarization**, **sentiment analysis**, and more. 
             Our models are sourced from Hugging Face's pre-trained models, ensuring high performance and reliability. 

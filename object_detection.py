@@ -22,7 +22,7 @@ def detect_objects(image_data):
 # Page function for object detection
 def object_detection_page():
     st.title("Object Detection")
-    st.markdown("**Upload an image, and the app will detect objects in it using the Hugging Face API.**")
+    st.markdown("**Upload an image(which has multiple object), and the app will detect objects in it using the Hugging Face API.**")
 
     # File uploader
     uploaded_file = st.file_uploader(label="Upload Image", type=["jpg", "jpeg", "png"])

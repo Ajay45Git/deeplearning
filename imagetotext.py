@@ -21,14 +21,14 @@ def query_image_to_text(filename):
 
 # Page Function for Image to Text
 def image_to_text_page():
-    st.title("Image Captioning Demo")
+    st.title("Image Captioning")
     st.markdown("**Please Upload an Image File:**")
 
     uploaded_file = st.file_uploader(label="Upload file", type=["jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
         # Display uploaded image
-        st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+        st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
 
         # Form submission for processing the image
         with st.form(key="Upload Form", clear_on_submit=True):

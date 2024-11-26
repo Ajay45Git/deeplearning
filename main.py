@@ -1,4 +1,5 @@
 import requests
+from streamlit_lottie import st_lottie  # Import for animation
 from streamlit import sidebar, error, title, write
 from streamlit_option_menu import option_menu
 from imagetotext import image_to_text_page
@@ -10,6 +11,17 @@ from qa_app import qa_page
 from sentiment_analysis import sentiment_analysis_page
 from summarization import summarization_page
 from translation import translation_page  # Import the translation page
+
+
+# Function to load Lottie animation from URL
+def load_lottie_url(url: str):
+    try:
+        r = requests.get(url)
+        r.raise_for_status()  # Check for successful request
+        return r.json()  # Return the animation JSON
+    except requests.exceptions.RequestException as e:
+        error(f"Error loading animation: {e}")
+        return None
 
 
 def main():
@@ -45,6 +57,12 @@ def main():
     if selected == "Home":
         title("Welcome to Our AI-powered Platform!")
 
+        # Add animated Lottie animation for an interactive feel
+        animation = load_lottie_url("https://assets2.lottiefiles.com/packages/lf20_khzniaya.json")  # Try using a new URL
+
+
+        if animation:
+            st_lottie(animation, speed=1, width=500, height=300, key="welcome_animation")
 
         # Attractive welcome message
         write("""

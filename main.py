@@ -10,6 +10,7 @@ from object_detection import object_detection_page
 from qa_app import qa_page
 from sentiment_analysis import sentiment_analysis_page
 from summarization import summarization_page
+from textgene import llama_text_generation_page
 from translation import translation_page  # Import the translation page
 
 
@@ -30,13 +31,13 @@ def main():
         selected = option_menu(
             menu_title="Main Menu",  # Sidebar Title
             options=[
-                "Home", "Image Classification", "Image to Text", "Text to Image",
+                "Home", "Image Classification", "Image to Text", "Text to Image","Story Generation",
                 "AI Chatbot", "Object Detection", "Question Answering",
                 "Sentiment Analysis", "Text Summarization", "Language Translation",
                 "About", "Contact"
             ],
             icons=[
-                "house", "file-earmark-image", "file-earmark-text", "image",
+                "house", "file-earmark-image", "file-earmark-text", "image","book",
                 "chat-left-text", "camera-video", "question-circle",
                 "chat-left-dots", "newspaper", "translate", "info-circle", "envelope"
             ],
@@ -82,6 +83,8 @@ def main():
         image_to_text_page()
     elif selected == "Text to Image":
         text_to_image_page()
+    elif selected == "Story Generation":
+        llama_text_generation_page()
     elif selected == "AI Chatbot":
         chatbot_page()
     elif selected == "Object Detection":

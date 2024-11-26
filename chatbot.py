@@ -23,6 +23,7 @@ def query_huggingface(model, messages, max_tokens=500):
 
 # Page function for chatbot
 def chatbot_page():
+    
     # Initialize session state
     if "messages" not in st.session_state:
         st.session_state["messages"] = []
@@ -32,6 +33,7 @@ def chatbot_page():
     # Title and instructions
     st.title("AI Chatbot")
     st.markdown("Chat with the **Qwen2.5-Coder-32B-Instruct** model powered by Hugging Face.")
+    st.write("Press enter after entering prompt")
 
     # Function to handle user input and update the chat
     def handle_input():

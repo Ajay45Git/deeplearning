@@ -41,7 +41,7 @@ def main():
             icons=[
                 "house", "file-earmark-image", "file-earmark-text", "image", "book",
                 "chat-left-text", "camera-video", "question-circle",
-                "chat-left-dots", "newspaper", "translate", "qrcode",
+                "chat-left-dots", "newspaper", "translate", "image",
                 "info-circle", "envelope"
             ],
             menu_icon="cast",  # Icon for the sidebar menu

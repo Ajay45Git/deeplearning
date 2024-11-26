@@ -17,19 +17,14 @@ def query(filename):
 
 
 # Function to display Image Recognition tab
-
 def image_classification_page():
+    # Brief Introduction
     st.write("""
-        This app demonstrates a simple multi-page Streamlit application with interactive image classification 
-        functionality using Hugging Face's object detection model.
-
-        #### Built With:
-        - Streamlit
-        - Hugging Face Inference API
-        - Python
+    ## Image Classification with ResNet-50
+    Upload an image, and our pre-trained **ResNet-50** model will recognize its contents. 
+    The model will return the top predictions with confidence scores.
     """)
 
-    st.title("Image Classification using Hugging Face API")
     st.write("Upload an image to get recognized content using the Hugging Face model.")
 
     # File uploader for image
@@ -39,7 +34,7 @@ def image_classification_page():
     if uploaded_image is not None:
         # Display the uploaded image
         image = Image.open(uploaded_image)
-        st.image(image, caption="Uploaded Image", use_column_width=True)
+        st.image(image, caption="Uploaded Image", use_container_width=True)  # Updated parameter
 
         # Convert image to RGB (if not already in that format)
         if image.mode != 'RGB':
@@ -62,4 +57,5 @@ def image_classification_page():
             # Display the predictions as an ordered list with scores
             st.write("### Predictions:")
             for idx, (label, score) in enumerate(zip(labels, scores), start=1):
-                st.write(f"{idx}. **{label}**: {score:.4f}")
+                st.write(f"- **{label}** with confidence **{score:.2%}**")
+

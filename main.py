@@ -31,7 +31,7 @@ def main():
         selected = option_menu(
             menu_title="Main Menu",  # Sidebar Title
             options=[
-                "Home", "Image Classification", "Image to Text", "Text to Image","Story Generation",
+                "Home", "Image Classification", "Image to Text", "Text to Image","Text Generation",
                 "AI Chatbot", "Object Detection", "Question Answering",
                 "Sentiment Analysis", "Text Summarization", "Language Translation",
                 "About", "Contact"
@@ -83,7 +83,7 @@ def main():
         image_to_text_page()
     elif selected == "Text to Image":
         text_to_image_page()
-    elif selected == "Story Generation":
+    elif selected == "Text Generation":
         llama_text_generation_page()
     elif selected == "AI Chatbot":
         chatbot_page()

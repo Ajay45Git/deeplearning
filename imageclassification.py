@@ -21,7 +21,7 @@ def image_classification_page():
     # Brief Introduction
     st.write("""
     ## Image Classification with ResNet-50
-    Upload an image, and our pre-trained **ResNet-50** model will recognize its contents. 
+    Upload an image (single object), and our pre-trained **ResNet-50** model will recognize its contents. 
     The model will return the top predictions with confidence scores.
     """)
 

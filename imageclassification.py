@@ -20,7 +20,7 @@ def image_classification_page():
     # Title and Introduction
     st.markdown("""
         <div style="text-align: center;">
-            <h1 style="color: #4CAF50;">🖼️ Image Classification with ResNet-50</h1>
+            <h1 style="color: #4CAF50;">🖼️ Image Classification</h1>
             <p style="font-size: 18px; color: #555;">Upload an image, and our pre-trained <b>ResNet-50</b> model will recognize its contents. The model will return the top predictions with confidence scores.</p>
         </div>
     """, unsafe_allow_html=True)

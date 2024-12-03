@@ -71,14 +71,16 @@ def main():
 
         # Attractive welcome message
         write("""
-            👋 **Welcome to our platform!**  
-            Dive into a world of cutting-edge AI models and tools designed to perform a wide range of tasks.  
-            Whether you need **image classification**, **text summarization**, **question answering**, or much more —  
-            we have you covered with our user-friendly AI-powered services.
+                    👋 **Welcome to our platform!**  
+                    Dive into a world of cutting-edge AI models and tools designed to perform a wide range of tasks.  
+                    Whether you need **image classification**, **text summarization**, **question answering**, or much more —  
+                    we have you covered with our user-friendly AI-powered services.
 
-            Explore the features from the sidebar and start interacting with the tools today!  
-            Let's make AI easy and fun! 🚀
-        """)
+                    **To get started, simply click on the options in the sidebar (top left corner) to access the AI tools.**  
+                    
+                    Explore the features and start interacting with the tools today!  
+                    Let's make AI easy and fun! 🚀
+                """)
 
     # Other sections
     elif selected == "Image Classification":

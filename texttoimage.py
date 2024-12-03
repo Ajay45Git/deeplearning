@@ -23,15 +23,31 @@ def generate_image_from_text(prompt):
 
 # Page Function for Text-to-Image
 def text_to_image_page():
-    st.title("Text-to-Image Generator")
-    st.markdown("**Enter a text prompt to create an image:**")
+    # Title and introduction
+    st.markdown(
+        """
+        <div style="text-align: center;">
+            <h1 style="color: #4CAF50;">🎨 Text-to-Image Generator</h1>
+            <p style="font-size: 18px; color: #555;">Generate an image based on your description using the Stable Diffusion XL model.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Sidebar instructions
+    st.write("**How to Use**")
+    st.write("""
+        1. Enter a text prompt that describes the image you want.
+        2. Click **Generate Image**.
+        3. The app will generate the image and display it below.
+    """)
 
     # Input text prompt
-    prompt = st.text_input(label="Text Prompt", placeholder="Describe the image you want to generate...")
+    prompt = st.text_input(label="Describe the Image", placeholder="e.g., A sunset over the ocean...")
 
-    # Form submission
-    if st.button("Generate Image"):
-        if prompt:
+    # Generate image when button is clicked
+    if st.button("🖼️ Generate Image"):
+        if prompt.strip():
             st.info("Generating the image. Please wait...")
             image = generate_image_from_text(prompt)
 
@@ -51,3 +67,15 @@ def text_to_image_page():
                 )
         else:
             st.warning("Please enter a text prompt to generate an image.")
+
+    # Footer credit
+    st.markdown(
+        """
+        <hr>
+        <p style="text-align: center; color: #777;">✨ Powered by Hugging Face's Stable Diffusion XL Model ✨</p>
+        """,
+        unsafe_allow_html=True,
+    )
+
+# Call the page function
+#text_to_image_page()

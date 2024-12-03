@@ -12,15 +12,33 @@ def query(payload):
 
 # Page function for Text Summarization
 def summarization_page():
-    st.title("Text Summarization Model")
-    st.write("Enter a paragraph below to summarize using the BERT-large model.")
+    # Title and intro with styling
+    st.markdown(
+        """
+        <div style="text-align: center;">
+            <h1 style="color: #4CAF50;">📝 Text Summarizer 🚀</h1>
+            <p style="color: #555;">Quickly summarize any paragraph using AI-powered models.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Sidebar with instructions
+    st.write("**How it Works**")
+    st.write("""
+        1. Enter a paragraph or text in the box below.
+        2. Click **Summarize** to generate a concise summary.
+        3. The summary will appear right after the button.
+    """)
 
     # User input text
-    input_text = st.text_area("Input Text", height=300)
+    st.markdown("### ✍️ Enter Your Text Here")
+    input_text = st.text_area("Input Text", height=300, placeholder="Paste your text here...")
 
-    if st.button("Summarize"):
+    # Summarize button
+    if st.button("🚀 Summarize"):
         if input_text.strip():
-            with st.spinner("Summarizing..."):
+            with st.spinner("Summarizing... 🔍"):
                 try:
                     output = query({"inputs": input_text})
                     if isinstance(output, list) and len(output) > 0:
@@ -31,9 +49,19 @@ def summarization_page():
                         summary = output.get("summary_text", "No summary returned.")
                     else:
                         summary = "Unexpected API response format."
-                    st.subheader("Summary:")
-                    st.write(summary)
+                    st.subheader("### 📝 Summary:")
+                    st.markdown(f"<div style='background-color: #f4f8fb; padding: 20px; border-radius: 5px; border: 1px solid #ddd;'><p style='font-size: 16px; color: #333;'>{summary}</p></div>", unsafe_allow_html=True)
                 except Exception as e:
-                    st.error(f"An error occurred: {e}")
+                    st.error(f"❌ An error occurred: {e}")
         else:
-            st.warning("Please enter text to summarize!")
+            st.warning("⚠️ Please enter text to summarize!")
+
+    # Footer with credits
+    st.markdown(
+        """
+        <hr>
+        <p style="text-align: center; color: #777;">✨ Powered by Hugging Face API ✨</p>
+        """,
+        unsafe_allow_html=True,
+    )
+

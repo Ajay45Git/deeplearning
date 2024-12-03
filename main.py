@@ -12,6 +12,7 @@ from sentiment_analysis import sentiment_analysis_page
 from summarization import summarization_page
 from textgene import llama_text_generation_page
 from translation import translation_page
+from word_cloud import wordcloud_page
 from qr import qr_code_generator_page  # Import the QR Code Generator
 
 
@@ -32,27 +33,28 @@ def main():
         selected = option_menu(
             menu_title="Main Menu",  # Sidebar Title
             options=[
-                "Home", "Image Classification", "Image to Text", "Text to Image", "Story Generation",
+                "Home", "Image Classification", "Image to Text", "Text to Image","Word Cloud","Story Generation",
                 "AI Chatbot", "Object Detection", "Question Answering",
                 "Sentiment Analysis", "Text Summarization", "Language Translation",
                 "QR Code Generator",
                 "About", "Contact"
             ],
             icons=[
-                "house", "file-earmark-image", "file-earmark-text", "image", "book",
+                "house", "file-earmark-image", "file-earmark-text", "image","cloud", "book",
                 "chat-left-text", "camera-video", "question-circle",
-                "chat-left-dots", "newspaper", "translate", "image",
+                "chat-left-dots", "newspaper", "translate", "qr code",
                 "info-circle", "envelope"
             ],
             menu_icon="cast",  # Icon for the sidebar menu
             default_index=0,
             styles={
-                "container": {"padding": "15px", "background-color": "#f0f4f8", "border-radius": "8px"},
-                "icon": {"color": "#4CAF50", "font-size": "20px"},
-                "nav-link": {"font-size": "16px", "margin": "10px 0", "padding": "10px", "color": "#333",
-                             "font-weight": "bold"},
-                "nav-link-selected": {"background-color": "#4CAF50", "color": "white", "font-size": "18px",
-                                      "font-weight": "bold"},
+                "container": {"padding": "8px", "background-color": "#f0f4f8", "border-radius": "8px"},
+                # Reduced padding
+                "icon": {"color": "#4CAF50", "font-size": "18px"},  # Reduced font size for icons
+                "nav-link": {"font-size": "14px", "margin": "6px 0", "padding": "8px", "color": "#333",
+                             "font-weight": "bold"},  # Reduced font size and margin
+                "nav-link-selected": {"background-color": "#4CAF50", "color": "white", "font-size": "16px",
+                                      "font-weight": "bold"},  # Adjusted selected item size
                 "nav-link-hover": {"background-color": "#ddd", "color": "#333"},
             }
         )
@@ -85,6 +87,8 @@ def main():
         image_to_text_page()
     elif selected == "Text to Image":
         text_to_image_page()
+    elif selected == "Word Cloud":
+        wordcloud_page()
     elif selected == "Story Generation":
         llama_text_generation_page()
     elif selected == "AI Chatbot":

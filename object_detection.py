@@ -21,22 +21,34 @@ def detect_objects(image_data):
 
 # Page function for object detection
 def object_detection_page():
-    st.title("Object Detection")
-    st.markdown("**Upload an image(which has multiple object), and the app will detect objects in it using the Hugging Face API.**")
+    st.markdown(
+        """
+        <div style="text-align: center;">
+            <h1 style="color: #4CAF50;">🖼️ Object Detection</h1>
+            <p style="color: #555;">Upload an image, and the app will detect objects in it using the Hugging Face API.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    # File uploader
-    uploaded_file = st.file_uploader(label="Upload Image", type=["jpg", "jpeg", "png"])
+    # Sidebar Instructions
+    st.write("**How to Use**")
+    st.write("""
+        1. Upload an image (JPEG/PNG).
+        2. Press **Detect Objects** to analyze the image.
+        3. Detected objects will be listed with confidence scores.
+    """)
+
+    # File uploader for image
+    uploaded_file = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
         # Display uploaded image
         image = Image.open(uploaded_file)
         st.image(image, caption="Uploaded Image", use_container_width=True)
 
-        # Process the image upon form submission
-        with st.form(key="ObjectDetectionForm"):
-            submit = st.form_submit_button(label="Detect Objects")
-
-        if submit:
+        # Object detection button
+        if st.button("🔍 Detect Objects"):
             # Convert image to binary data
             image_data = io.BytesIO()
             image.save(image_data, format="JPEG")
@@ -56,3 +68,18 @@ def object_detection_page():
                         st.write(f"- **{label.capitalize()}** with confidence **{score:.2%}**")
                 else:
                     st.warning("No objects detected in the image.")
+            else:
+                st.error("❌ Unable to detect objects. Please try again.")
+
+    else:
+        st.warning("⚠️ Please upload an image to detect objects.")
+
+    # Footer credit
+    st.markdown(
+        """
+        <hr>
+        <p style="text-align: center; color: #777;">✨ Powered by Hugging Face's DETR Object Detection Model ✨</p>
+        """,
+        unsafe_allow_html=True,
+    )
+

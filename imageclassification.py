@@ -147,17 +147,12 @@ def image_classification_page():
             # Call the Hugging Face API to get predictions  
             try:  
                 output = query(save_path)  
-                st.write("API raw output:", output)  # Debugging line added  
+                st.write("API raw output:", output)  # For debugging  
   
-                if isinstance(output, list):  
-                    # Extract labels and confidence scores from the output  
-                    labels = [item['label'] for item in output]  
-                    scores = [item['score'] for item in output]  
-  
-                    # Display the predictions as an ordered list with scores  
+                if isinstance(output, list) and all(isinstance(item, dict) and 'label' in item and 'score' in item for item in output):  
                     st.write("### Top Predictions:")  
-                    for idx, (label, score) in enumerate(zip(labels, scores), start=1):  
-                        st.write(f"- **{label}** with confidence **{score:.2%}**")  
+                    for idx, item in enumerate(output, start=1):  
+                        st.write(f"- **{item['label']}** with confidence **{item['score']:.2%}**")  
                 elif isinstance(output, dict) and "error" in output:  
                     st.error(f"API Error: {output['error']}")  
                 else:  

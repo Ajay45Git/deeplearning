@@ -1,4 +1,4 @@
-"""
+
 import streamlit as st
 import requests
 from PIL import Image
@@ -79,71 +79,4 @@ def image_classification_page():
 
 # Call the functihon to display the image classification page
 #image_classification_page()
-"""
 
-
-
-import streamlit as st
-import requests
-from PIL import Image
-
-API_URL = "https://api-inference.huggingface.co/models/microsoft/resnet-50"
-headers = {"Authorization": "Bearer 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"}
-
-# Query function
-def query(filename):
-    with open(filename, "rb") as f:
-        data = f.read()
-    response = requests.post(API_URL, headers=headers, data=data)
-    return response.json()
-
-# Main page function
-def image_classification_page():
-    st.markdown("""
-        <div style="text-align: center;">
-            <h1 style="color: #4CAF50;">🖼️ Image Classification</h1>
-            <p style="font-size: 18px; color: #555;">Upload an image, and our pre-trained <b>ResNet-50</b> model will recognize its contents. The model will return the top predictions with confidence scores.</p>
-        </div>
-    """, unsafe_allow_html=True)
-
-    st.write("**How to Use**")
-    st.write("""
-        1. Upload an image (JPG, JPEG, PNG).
-        2. Click **Recognize Image** to classify the image.
-        3. The app will display the predictions with their confidence scores.
-    """)
-
-    uploaded_image = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
-
-    if uploaded_image is not None:
-        image = Image.open(uploaded_image)
-        st.image(image, caption="Uploaded Image", use_container_width=True)
-
-        if image.mode != 'RGB':
-            image = image.convert('RGB')
-
-        save_path = "uploaded_image.jpg"
-        image.save(save_path)
-
-        if st.button("Recognize Image"):
-            st.write("Recognizing the image...")
-
-            try:
-                output = query(save_path)
-
-                if isinstance(output, dict) and "error" in output:
-                    st.error(f"API Error: {output['error']}")
-                elif isinstance(output, list):
-                    labels = [item['label'] for item in output]
-                    scores = [item['score'] for item in output]
-
-                    st.write("### Top Predictions:")
-                    for idx, (label, score) in enumerate(zip(labels, scores), start=1):
-                        st.write(f"- **{label}** with confidence **{score:.2%}**")
-                else:
-                    st.error("Unexpected API response format.")
-
-            except Exception as e:
-                st.error(f"Error occurred: {e}")
-    else:
-        st.warning("Please upload an image to recognize.")

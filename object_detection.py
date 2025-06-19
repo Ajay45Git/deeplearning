@@ -4,9 +4,12 @@ from PIL import Image, ImageDraw
 import io
 
 # Hugging Face API settings
-API_URL = "https://api-inference.huggingface.co/models/facebook/detr-resnet-50"
-HEADERS = {"Authorization": "Bearer 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"}  # Replace with your Hugging Face token
-
+#API_URL = "https://api-inference.huggingface.co/models/facebook/detr-resnet-50"
+#HEADERS = {"Authorization": "Bearer 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"}  # Replace with your Hugging Face token
+API_URL = "https://router.huggingface.co/hf-inference/models/facebook/detr-resnet-50"
+headers = {
+    "Authorization": f"Bearer {os.environ['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']}",
+}
 
 # Function to query Hugging Face API for object detection
 def detect_objects(image_data):

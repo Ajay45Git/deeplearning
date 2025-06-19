@@ -96,7 +96,7 @@ from PIL import Image
   
 # Hugging Face API settings  
 API_URL = "https://api-inference.huggingface.co/models/microsoft/resnet-50"  
-headers = {"Authorization": "Bearer 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"}  # Replace with your Hugging Face token  
+headers = {"Authorization": "Bearer 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"}  # Replace with your Hugging Face token  
   
 # Function to query the Hugging Face API with an image  
 def query(filename):  

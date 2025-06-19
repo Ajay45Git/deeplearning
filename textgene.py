@@ -2,9 +2,9 @@ import streamlit as st
 import requests
 
 # API URL and headers
-API_URL = "https://api-inference.huggingface.co/models/meta-llama/Llama-3.2-1B"
+#API_URL = "https://api-inference.huggingface.co/models/meta-llama/Llama-3.2-1B"
 headers = {"Authorization": "Bearer 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"}
-
+API_URL = "https://api-inference.huggingface.co/models/meta-llama/Llama-3-8b-chat-hf"
 # Function to query the Hugging Face model
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)

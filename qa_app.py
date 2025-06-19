@@ -3,7 +3,7 @@ import requests
 
 # Hugging Face API Information
 API_URL = "https://api-inference.huggingface.co/models/deepset/roberta-base-squad2"
-headers = {"Authorization": "Bearer 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"}  # Replace with your Hugging Face API key
+headers = {"Authorization": "Bearer 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"}  # Replace with your Hugging Face API key
 
 # Function to query Hugging Face API
 def query(payload):
